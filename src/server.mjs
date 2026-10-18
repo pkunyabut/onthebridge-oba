@@ -3,6 +3,12 @@ import { readFile } from 'node:fs/promises';
 import { join, sep } from 'node:path';
 import { ROOT_DIR } from './paths.mjs';
 
+// The PDF reader (pdfjs-dist 6) needs features that only exist in Node 22 and newer; fail early with a clear message
+if (Number(process.versions.node.split('.')[0]) < 22) {
+  console.error(`OBA needs Node.js 22 or newer (this is ${process.versions.node}). Download it from https://nodejs.org`);
+  process.exit(1);
+}
+
 // Load API keys from the project's .env (if there is one) before loading modules that call an AI
 try { process.loadEnvFile(join(ROOT_DIR, '.env')); } catch {}
 

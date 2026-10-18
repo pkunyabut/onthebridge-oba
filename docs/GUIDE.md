@@ -31,7 +31,7 @@ Everything below assumes you run OBA on your own computer, for yourself or a sma
 
 | Need | Notes |
 |---|---|
-| A computer with **Node.js 20.12 or newer** | Check with `node --version`. Windows, macOS and Linux work. Get Node from <https://nodejs.org>. |
+| A computer with **Node.js 22 or newer** | Check with `node --version`. Windows, macOS and Linux work. Get Node from <https://nodejs.org>. |
 | An **AI provider key** | At least one of: DeepSeek (default), Anthropic, OpenAI, Google Gemini, OpenRouter. You pay the provider directly. |
 | A **web-search key** *(treat it as required)* | Tavily, Serper or Brave. Without one OBA falls back to free Wikipedia and DuckDuckGo lookups; DuckDuckGo returns nothing to programs, so in practice **you get Wikipedia pages only** — often one relevant page, plus unrelated ones. We tested exactly this: see [Appendix A](#19-appendix-a-a-real-weak-run-and-what-it-teaches). Tavily has a free tier. |
 | A modern browser | The interface is a local web page. |
@@ -362,7 +362,7 @@ To delete a job, use the 🗑️ in **All jobs** (this removes the job folder).
 | `403 Forbidden` from the API | The request did not come from OBA's own page (wrong host, foreign origin). Use the page |
 | A page I gave is "refused" | OBA will not fetch private/loopback/local addresses (SSRF protection) |
 | Job stuck in `processing` after a crash | Restart the server, then delete the job and run it again |
-| Windows: `node` not found | Install Node.js 20.12+ and reopen the terminal; or use the full path in `start.bat` |
+| Windows: `node` not found | Install Node.js 22+ and reopen the terminal; or use the full path in `start.bat` |
 | Garbled Thai in the Windows console | Cosmetic; the files are UTF-8 |
 
 ## 17. FAQ

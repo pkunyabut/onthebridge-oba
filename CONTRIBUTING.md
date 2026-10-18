@@ -23,7 +23,7 @@ npm test            # offline, no key, no cost
 npm start           # http://127.0.0.1:8080
 ```
 
-- Node.js 20.12+, ES modules, **no build step** and (almost) no dependencies — please think twice before adding one.
+- Node.js 22+, ES modules, **no build step** and (almost) no dependencies — please think twice before adding one.
 - Tests use `node:test`. Add a test with every fix. `tests/pipeline.test.mjs` runs a whole job against a stubbed network: extend it when you touch a stage.
 - Comments explain *why* (a real failure, a provider quirk). If you fix a bug found in real use, say what happened in a short comment.
 - Keep prompts in English; the article language is a per-job setting (`src/language.mjs`).

@@ -1,4 +1,4 @@
-﻿{
+{
     "name":  "onthebridge-oba",
     "version":  "0.1.0",
     "description":  "OnTheBridge OBA - a semi-automatic article-writing system with a human gate: the AI researches, writes and checks; a person decides. Nothing is published by the system.",
@@ -6,7 +6,7 @@
     "type":  "module",
     "main":  "src/server.mjs",
     "engines":  {
-                    "node":  "\u003e=20.12"
+                    "node":  ">=22"
                 },
     "scripts":  {
                     "start":  "node src/server.mjs",

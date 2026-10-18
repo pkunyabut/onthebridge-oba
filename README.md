@@ -71,7 +71,7 @@ Then the **Human Gate**: read the file, then **approve**, **send back with an in
 
 ## Quick start
 
-You need **Node.js 20.12 or newer** and an API key for at least one AI provider
+You need **Node.js 22 or newer** and an API key for at least one AI provider
 (DeepSeek is the default and the most thoroughly exercised).
 
 ```bash
