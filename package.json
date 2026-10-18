@@ -1,4 +1,4 @@
-﻿{
+{
     "name":  "onthebridge-oba",
     "version":  "0.1.0",
     "description":  "OnTheBridge OBA - a semi-automatic article-writing system with a human gate: the AI researches, writes and checks; a person decides. Nothing is published by the system.",
@@ -26,7 +26,7 @@
                          "@modelcontextprotocol/sdk":  "^1.32.1",
                          "exceljs":  "^4.4.0",
                          "mammoth":  "^1.12.3",
-                         "pdfjs-dist":  "^6.3.289",
+                         "pdfjs-dist":  "^6.4.299",
                          "zod":  "^4.6.7"
                      },
     "overrides":  {
