@@ -1,0 +1,64 @@
+template_id: explainer_howto
+name: "Explainer / How-to (OnTheBridge Style)"
+description: >
+  Explains a concept by its logic, or steps that have been verified, so the reader understands and can act.
+  Not every topic has to be a how-to: when there are no verified steps, explain the reasoning instead.
+best_for:
+  - Concepts that readers find confusing (money, health basics, technology)
+  - Pillars: Human+AI, Life Skills
+  - Content with checkable steps or a clear causal chain
+not_recommended_for:
+  - Topics with no verifiable steps (do not invent steps)
+  - Disputed issues that need several sides (use news_analysis or Questions)
+
+stages:
+  - name: Problem / Question
+    order: 1
+    purpose: >
+      Open with the real question or problem readers have, grounded in a real fact or situation.
+      Never assume the reader ("You just...", "Imagine..."). Name the question precisely.
+    guiding_questions:
+      - "What exactly is confusing or hard about this topic?"
+      - "Which verified fact shows why it is a real problem?"
+    length_hint: "1-2 short paragraphs"
+
+  - name: Why It Matters
+    order: 2
+    purpose: >
+      Give the context and evidence that make the reader see how this relates to their life.
+    guiding_questions:
+      - "What is at stake if the reader misunderstands this?"
+      - "Which data or event supports the stakes?"
+    length_hint: "2-3 paragraphs"
+
+  - name: Step-by-Step Explanation
+    order: 3
+    purpose: >
+      Explain the concept in logical order, or give the steps that were checked against a source.
+      State limits and exceptions. Never add a step that is not in the evidence.
+    guiding_questions:
+      - "What is the simplest correct order to explain this?"
+      - "Where does the common simplification go wrong?"
+    length_hint: "4-6 paragraphs or sub-sections (the longest part)"
+
+  - name: Actionable Takeaway
+    order: 4
+    purpose: >
+      Say what the reader can do or ask next, with limits stated (especially for money and health).
+      No numbers, prices or dates unless they are in a verified claim. Do not close with a sales pitch.
+    guiding_questions:
+      - "What is one thing the reader can check or try?"
+      - "What should the reader ask a professional?"
+    length_hint: "1-2 paragraphs"
+
+metadata:
+  typical_word_count: "1200-1800"
+  tone: "clear, patient, plain words"
+  pillar_fit: ["Human+AI", "Life Skills"]
+
+automation:
+  rules: "AUTOMATION_RULES.md"
+  human_gate: "final_artifacts_only"
+  length_policy: "user_request_then_template_range"
+  no_fabricated_scenes: true
+  structure_is_guidance: true

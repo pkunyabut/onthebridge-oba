@@ -1,0 +1,86 @@
+template_id: reflective
+name: "Reflective Essay (OnTheBridge Style)"
+description: >
+  A reflective essay for life and philosophy topics where the reader is meant to keep thinking,
+  not just receive information. Suits readers aged 25-65+ who look for depth over speed.
+best_for:
+  - Life/philosophy topics (burnout, the meaning of work, relationships)
+  - Pillars: Life Skills, Legacy, Questions
+  - Content where the writer has a perspective or personal experience to weave in
+not_recommended_for:
+  - Breaking news that needs speed
+  - Technical content that needs precision above all
+
+stages:
+  - name: Hook
+    order: 1
+    purpose: >
+      Draw interest with a real question or a real, provocative fact (an event that actually happened and has evidence).
+      Never create a hypothetical scene or assume the reader ("You just...", "Have you ever felt...", "Imagine...").
+      Make the reader stop scrolling. Do not open with dry facts.
+    guiding_questions:
+      - "What is the conflict or hidden question inside this topic?"
+      - "Which real event or fact in the evidence shows the issue immediately?"
+    length_hint: "1-2 short paragraphs"
+
+  - name: Context
+    order: 2
+    purpose: >
+      Give the context for why this matters "now", linked to a social situation or era the reader knows.
+    guiding_questions:
+      - "How does this relate to the life of a reader aged 25-65+?"
+      - "Is there current data, a statistic or an event that supports it?"
+    length_hint: "2-3 paragraphs"
+
+  - name: Story
+    order: 3
+    purpose: >
+      If there is evidence, tell the real event, case or experience. If there is none, reason from the evidence instead of a story. Never invent an experience.
+      It should be a story with a beginning, middle and end, not just a passing example.
+    guiding_questions:
+      - "Who is the main character of this story?"
+      - "What is the turning point?"
+    length_hint: "3-5 paragraphs (the longest part of the article)"
+
+  - name: Insight
+    order: 4
+    purpose: >
+      Interpret the story and connect it to a principle or a wider perspective.
+      A philosophical frame (Buddhist / Taoist / Stoic) may be woven in where it fits the context.
+    guiding_questions:
+      - "What does the story say that is bigger than itself?"
+      - "Which framework or principle helps explain this?"
+    length_hint: "2-3 paragraphs"
+
+  - name: Takeaway
+    order: 5
+    purpose: >
+      Summarise what the reader can really use in life.
+      It must be practicable, not just a moral idea.
+    guiding_questions:
+      - "What can the reader do after reading?"
+      - "Is there a question the reader should ask themselves?"
+    length_hint: "1-2 paragraphs"
+
+  - name: Reflection
+    order: 6
+    purpose: >
+      End with an open question the reader can answer for themselves — the last sentence of the article must be a question.
+      No dead-end summary. Leave room for a personal interpretation.
+      Never close with "Therefore..." or "In summary...".
+    guiding_questions:
+      - "What question do you want to leave for the reader to keep thinking about?"
+    length_hint: "1 short paragraph, or 1-2 closing sentences"
+
+metadata:
+  typical_word_count: "1200-1800"
+  tone: "warm, conversational, with a personal perspective"
+  pillar_fit: ["Life Skills", "Legacy", "Questions"]
+
+# The central rules outrank this template
+automation:
+  rules: "AUTOMATION_RULES.md"
+  human_gate: "final_artifacts_only"
+  length_policy: "user_request_then_template_range"
+  no_fabricated_scenes: true
+  structure_is_guidance: true

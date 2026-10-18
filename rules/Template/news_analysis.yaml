@@ -1,0 +1,57 @@
+template_id: news_analysis
+name: "News Analysis (OnTheBridge Style)"
+description: >
+  A compiled analysis of a news issue from sources that have already been published. Open with a real event,
+  tell every side according to the evidence, and never claim an exclusive or a first disclosure.
+best_for:
+  - Current issues with several sides and public sources
+  - Pillars: Questions, Documentary, Human+AI
+not_recommended_for:
+  - Rumours with no published source
+  - Breaking news that is still unfolding
+
+stages:
+  - name: Lead
+    order: 1
+    purpose: >
+      Open with the real event, stated precisely, with its source. Say who did or said what, and when, only as far as the sources show.
+    guiding_questions:
+      - "What exactly happened, according to the sources?"
+    length_hint: "1-2 short paragraphs"
+
+  - name: Key Facts
+    order: 2
+    purpose: >
+      Lay out the verified facts. Disputed claims need two independent sources, with the reason they are independent.
+    guiding_questions:
+      - "Which facts are verified, and which are still disputed?"
+    length_hint: "3-4 paragraphs"
+
+  - name: Background and Perspectives
+    order: 3
+    purpose: >
+      Give the background and tell each side's view with that side's own sources. Do not steer the reader toward one side.
+    guiding_questions:
+      - "Who are the sides and what is each side's best evidence?"
+    length_hint: "4-5 paragraphs (the longest part)"
+
+  - name: Implications and What to Watch
+    order: 4
+    purpose: >
+      Say what this may mean and what to watch next, clearly marked as interpretation. Close with an open question.
+      No numbers or dates unless they are in a verified claim.
+    guiding_questions:
+      - "What could change the picture, and what is still unknown?"
+    length_hint: "2-3 paragraphs"
+
+metadata:
+  typical_word_count: "1200-1800"
+  tone: "even-handed, precise, calm"
+  pillar_fit: ["Questions", "Documentary", "Human+AI"]
+
+automation:
+  rules: "AUTOMATION_RULES.md"
+  human_gate: "final_artifacts_only"
+  length_policy: "user_request_then_template_range"
+  no_fabricated_scenes: true
+  structure_is_guidance: true

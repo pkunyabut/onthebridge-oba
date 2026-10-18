@@ -1,0 +1,64 @@
+template_id: feature_narrative
+name: "Feature Narrative (OnTheBridge Style)"
+description: >
+  A narrative feature built from real people, places and quotes. Every character, scene and quote needs real data behind it.
+  Never add sensory detail from imagination. If data is missing, say so and propose another form.
+best_for:
+  - Documentary and Legacy topics with strong primary sources
+  - Pillars: Documentary, Legacy
+not_recommended_for:
+  - Topics with no primary sources
+  - Anything that would need invented scenes or quotes
+
+stages:
+  - name: Opening Scene
+    order: 1
+    purpose: >
+      Open with a real scene that the sources actually describe. Never create a scene or a quote.
+    guiding_questions:
+      - "Which scene is described in a source we opened?"
+    length_hint: "1-2 paragraphs"
+
+  - name: Theme Statement
+    order: 2
+    purpose: >
+      Say what the story is really about, in plain words, linked to the reader's life.
+    guiding_questions:
+      - "What is the larger question behind this scene?"
+    length_hint: "1 paragraph"
+
+  - name: Background / Evidence
+    order: 3
+    purpose: >
+      Give the history and facts that the scene stands on, weaving people, places and dates together. Favour primary sources.
+    guiding_questions:
+      - "Which primary sources support the background?"
+    length_hint: "3-4 paragraphs"
+
+  - name: Rising Detail
+    order: 4
+    purpose: >
+      Build the story with verified detail toward the turning point. Keep facts apart from interpretation.
+    guiding_questions:
+      - "What is the turning point and which source shows it?"
+    length_hint: "4-6 paragraphs (the longest part)"
+
+  - name: Closing Scene (Bookend)
+    order: 5
+    purpose: >
+      Return to the opening scene with new meaning (a bookend). End with a question or an open note, not a dead-end summary.
+    guiding_questions:
+      - "How does the opening scene read differently now?"
+    length_hint: "1-2 paragraphs"
+
+metadata:
+  typical_word_count: "1400-2000"
+  tone: "narrative, restrained, precise"
+  pillar_fit: ["Documentary", "Legacy"]
+
+automation:
+  rules: "AUTOMATION_RULES.md"
+  human_gate: "final_artifacts_only"
+  length_policy: "user_request_then_template_range"
+  no_fabricated_scenes: true
+  structure_is_guidance: true

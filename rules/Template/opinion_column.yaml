@@ -1,0 +1,62 @@
+template_id: opinion_column
+name: "Opinion Column (OnTheBridge Style)"
+description: >
+  A column that argues a position the user has stated clearly. Use only when the user gave a stance.
+  Never infer a stance from the topic alone; if there is none, use reflective.
+best_for:
+  - Topics where the user has a clear position
+  - Pillars: Questions, Human+AI
+not_recommended_for:
+  - No stated position from the user
+  - Disputed facts that need neutral presentation
+
+stages:
+  - name: Thesis
+    order: 1
+    purpose: >
+      State the user's position in one clear claim, anchored to a real fact or event.
+      Do not assume the reader and do not create an imaginary scene.
+    guiding_questions:
+      - "What exactly is the user's position, in one sentence?"
+      - "Which verified fact makes the position concrete?"
+    length_hint: "1-2 short paragraphs"
+
+  - name: Supporting Reasons
+    order: 2
+    purpose: >
+      Give the reasons for the position, each backed by a verified claim. Keep opinion separate from fact.
+    guiding_questions:
+      - "What are the strongest two or three reasons, in order?"
+      - "Which claim ID supports each reason?"
+    length_hint: "3-4 paragraphs"
+
+  - name: Steelman
+    order: 3
+    purpose: >
+      State the strongest opposing view fairly, with its own sources, then answer it honestly.
+      Do not attack a weak version of the other side.
+    guiding_questions:
+      - "What is the best argument against this position?"
+      - "Where does the opposing view have a point?"
+    length_hint: "2-3 paragraphs"
+
+  - name: Reaffirm
+    order: 4
+    purpose: >
+      Return to the thesis in a way that has grown from the argument, and leave the reader a question or proposal.
+      Do not repeat the whole article and do not close with a sales pitch.
+    guiding_questions:
+      - "What changed in the reader's view of the thesis after the steelman?"
+    length_hint: "1-2 paragraphs"
+
+metadata:
+  typical_word_count: "1200-1800"
+  tone: "direct but fair, personal"
+  pillar_fit: ["Questions", "Human+AI"]
+
+automation:
+  rules: "AUTOMATION_RULES.md"
+  human_gate: "final_artifacts_only"
+  length_policy: "user_request_then_template_range"
+  no_fabricated_scenes: true
+  structure_is_guidance: true

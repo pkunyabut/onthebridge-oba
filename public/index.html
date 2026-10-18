@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnTheBridge OBA</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,"Segoe UI",Roboto,sans-serif; background:#0f0f1a; color:#e0e0e0; min-height:100vh; }
+    .container { max-width:900px; margin:0 auto; padding:20px; }
+    h1 { font-size:22px; color:#fff; margin-bottom:4px; }
+    .subtitle { color:#777; font-size:13px; margin-bottom:20px; }
+    .tabs { display:flex; gap:4px; margin-bottom:16px; flex-wrap:wrap; }
+    .tab { padding:8px 14px; background:#1a1a2e; border:none; border-radius:8px; color:#888; cursor:pointer; font-size:12px; }
+    .tab.active { background:#4a9eff; color:#fff; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+    .card { background:#1a1a2e; border-radius:10px; padding:16px; margin-bottom:12px; border:1px solid #2a2a3e; }
+    .card h2 { font-size:14px; color:#fff; margin-bottom:10px; }
+    label { display:block; font-size:12px; color:#999; margin-bottom:3px; }
+    input, textarea, select { width:100%; padding:8px 10px; background:#0f0f1a; border:1px solid #2a2a3e; border-radius:6px; color:#e0e0e0; font-size:13px; margin-bottom:8px; }
+    input:focus, textarea:focus, select:focus { outline:none; border-color:#4a9eff; }
+    textarea { min-height:50px; resize:vertical; }
+    .btn { padding:8px 16px; border:none; border-radius:6px; font-size:13px; cursor:pointer; }
+    .btn-primary { background:#4a9eff; color:#fff; }
+    .btn-primary:disabled { background:#2a5a8f; cursor:not-allowed; }
+    .btn-secondary { background:#2a2a3e; color:#e0e0e0; }
+    .btn-small { padding:5px 10px; font-size:11px; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .job-item { padding:10px; background:#0f0f1a; border-radius:6px; margin-bottom:6px; border:1px solid #2a2a3e; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .job-item:hover { border-color:#4a9eff; }
+    .job-item .topic { font-size:13px; color:#fff; }
+    .job-item .meta { font-size:11px; color:#666; margin-top:2px; }
+    .status { font-size:10px; padding:2px 6px; border-radius:3px; }
+    .status-created { background:#2a3a5a; color:#4a9eff; }
+    .status-processing { background:#3a2a1a; color:#ffaa4a; }
+    .status-complete { background:#1a3a2a; color:#4aff8a; }
+    .status-error { background:#3a1a1a; color:#ff4a4a; }
+    .status-ready_for_review { background:#1a3a2a; color:#4aff8a; }
+    .status-needs_revision { background:#3a321a; color:#ffd24a; }
+    .gate-card { padding:12px; border-radius:6px; margin-bottom:12px; font-size:12px; line-height:1.6; }
+    .gate-card.ok { background:#12261c; border:1px solid #1f5a3a; }
+    .gate-card.block { background:#2a2412; border:1px solid #6a5a1f; }
+    .gate-card ul { margin:6px 0 0 18px; }
+    .gate-card .sentence { color:#aaa; font-style:italic; }
+    .status-approved { background:#12331f; color:#6aff9a; }
+    .status-cancelled { background:#2a2a2a; color:#999; }
+    .decision-card { background:#161b2e; border:1px solid #2f3f6a; }
+    .decision-card .hash { color:#7a8ab0; font-size:11px; font-family:monospace; margin-top:4px; word-break:break-all; }
+    .decision-card .warn, .warn { color:#ffd24a; margin-top:6px; }
+    .decision-card input, .decision-card textarea { width:100%; margin:4px 0 6px; box-sizing:border-box; }
+    .decision-card .history { margin-top:10px; color:#aaa; }
+    .search-item { padding:8px; background:#0f0f1a; border-radius:6px; margin-bottom:6px; border:1px solid #2a2a3e; }
+    .search-item .title { font-size:12px; color:#4a9eff; }
+    .search-item .url { font-size:10px; color:#666; word-break:break-all; }
+    .search-item .snippet { font-size:11px; color:#888; margin-top:3px; }
+    .stage { display:flex; align-items:center; gap:6px; padding:6px 8px; background:#0f0f1a; border-radius:4px; font-size:11px; margin-bottom:3px; }
+    .stage .name { flex:1; color:#888; }
+    .stage .icon { width:14px; height:14px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; }
+    .stage-complete { background:#1a3a2a; color:#4aff8a; }
+    .stage-processing { background:#3a2a1a; color:#ffaa4a; }
+    .stage-pending { background:#1a1a2e; color:#555; }
+    .stage-error { background:#3a1a1a; color:#ff4a4a; }
+    .article-body { background:#0f0f1a; border-radius:8px; padding:16px; margin-top:12px; max-height:500px; overflow-y:auto; font-size:13px; color:#ccc; line-height:1.7; }
+    .article-body h3 { color:#fff; margin:20px 0 8px; font-size:15px; }
+    .article-body strong { color:#fff; }
+    .article-body img { max-width:100%; border-radius:8px; margin:16px 0; }
+    .image-prompts { margin-top:8px; }
+    .prompt-item { padding:8px; background:#0f0f1a; border-radius:6px; margin-bottom:6px; font-size:11px; border:1px solid #2a2a3e; }
+    .prompt-item strong { color:#4a9eff; }
+    .empty { text-align:center; color:#555; padding:20px; font-size:12px; }
+    .external-item { padding:8px; background:#0f0f1a; border-radius:6px; margin-bottom:6px; border:1px solid #2a2a3e; font-size:11px; }
+    .external-item .url { color:#4a9eff; word-break:break-all; }
+    .external-item .note { color:#888; margin-top:3px; }
+    .add-external { display:flex; gap:6px; margin-bottom:6px; }
+    .add-external input { margin-bottom:0; }
+    .remove-btn { background:#3a1a1a; color:#ff4a4a; border:none; border-radius:4px; padding:3px 8px; cursor:pointer; font-size:10px; }
+    .section-title { font-size:11px; color:#777; text-transform:uppercase; letter-spacing:0.5px; margin:12px 0 6px; }
+    .hint { font-size:11px; color:#777; margin-bottom:8px; line-height:1.5; }
+    .pattern { display:flex; justify-content:space-between; padding:4px 0; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>OnTheBridge OBA</h1>
+    <p class="subtitle">Semi-automatic article writing with a human gate — the AI researches, writes and checks; a person decides. Nothing is published by the system.</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('create', this)">Create article</button>
+      <button class="tab" onclick="showTab('jobs', this)">All jobs</button>
+      <button class="tab" onclick="showTab('settings', this)">Insights</button>
+    </div>
+
+    <!-- Create Article -->
+    <div id="tab-create" class="tab-content active">
+      <div class="card">
+        <h2>📝 Article</h2>
+        <label>Topic *</label>
+        <input type="text" id="topic" placeholder="e.g. Why do we forget the handwriting of the people we love?">
+        <div class="grid2">
+          <div>
+            <label>Audience</label>
+            <select id="audience">
+              <option value="general">General readers</option>
+              <option value="25-65">Ages 25-65+</option>
+              <option value="tech">Technology</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+          <div>
+            <label>Article language</label>
+            <select id="language">
+              <option value="en">English</option>
+              <option value="th">Thai (ไทย)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid2">
+          <div>
+            <label>Article format (Template)</label>
+            <select id="template">
+              <option value="auto">Let the AI choose</option>
+              <option value="reflective">Reflective — a thoughtful essay (life, philosophy, meaning)</option>
+              <option value="explainer_howto">Explainer / How-to — explain and show how</option>
+              <option value="opinion_column">Opinion / Column — needs your stance in the guidance box</option>
+              <option value="news_analysis">News analysis — a real event, every side told from evidence</option>
+              <option value="feature_narrative">Feature / Narrative — needs evidence about real people</option>
+            </select>
+          </div>
+          <div>
+            <label>Content Pillar</label>
+            <select id="pillar">
+              <option value="auto">Let the AI choose</option>
+              <option value="Human+AI">Human+AI — told through real people or events; where perspective shifts</option>
+              <option value="Life Skills">Life Skills — something the reader can act on, with limits stated</option>
+              <option value="Documentary">Documentary — people, places, history; primary sources weigh most</option>
+              <option value="Questions">Questions — sides that really conflict; ends with an open question</option>
+              <option value="Legacy">Legacy — quotes and lives with an original; lessons across time</option>
+            </select>
+          </div>
+        </div>
+        <label>Extra guidance</label>
+        <textarea id="instructions" placeholder="e.g. focus on a fresh angle, or constraints you need. For an Opinion piece, state your stance here."></textarea>
+      </div>
+
+      <div class="card">
+        <h2>🔗 External links (optional)</h2>
+        <p class="hint">Add URLs the system must read. They are always opened first and are never screened out for relevance.</p>
+        <div class="add-external">
+          <input type="text" id="ext-url" placeholder="https://..." style="flex:2">
+          <input type="text" id="ext-note" placeholder="Note" style="flex:1">
+          <button class="btn btn-secondary btn-small" onclick="addExternal()">+ Add</button>
+        </div>
+        <div id="external-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>🎙️ Interview / original text (optional)</h2>
+        <p class="hint">Paste a transcript you have proofread. The system uses it as an evidence source and checks quotes against this text directly — a wrong transcription lets a wrong quote through, so proofread before pasting. Put the speaker's name at the start of a line, e.g. "Ms. A: ...". Works best with the Feature / Narrative format.</p>
+        <input type="text" id="tr-label" placeholder="Label, e.g. Interview with Ms. A, 12 Sep" style="margin-bottom:8px">
+        <textarea id="tr-text" placeholder="Paste the transcript here (at least 50 characters)" style="min-height:120px"></textarea>
+        <button class="btn btn-secondary btn-small" onclick="addTranscript()" style="margin-top:8px">+ Add interview</button>
+        <div id="transcript-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ AI provider</h2>
+        <label>Provider (used to write the article)</label>
+        <select id="ai-provider" onchange="updateModelDropdown()">
+          <option value="deepseek">DeepSeek (default)</option>
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Sonnet / Haiku / Opus)</option>
+          <option value="gemini">Google Gemini (2.0 Flash)</option>
+          <option value="openrouter">OpenRouter (Auto)</option>
+        </select>
+        <label>Model</label>
+        <select id="model">
+          <option value="deepseek-flash">DeepSeek Flash (default)</option>
+          <option value="deepseek-v4-pro">DeepSeek V4 Pro</option>
+        </select>
+        <label>API key for the chosen provider (optional if it is in .env)</label>
+        <input type="password" id="api-key" placeholder="sk-..." autocomplete="off">
+        <label>Search API key (optional — Serper; Tavily and Brave are read from .env)</label>
+        <input type="password" id="search-key" placeholder="Serper key" autocomplete="off">
+        <p class="hint">Keys typed here are sent only to the local server for this job and are never saved by the page or written to the job file. Putting them in the <code>.env</code> file is safer and saves typing.</p>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="create-btn" onclick="createJob()">Start the article</button>
+          <button class="btn btn-secondary" id="test-btn" onclick="testConnection()">🔌 Test the connection</button>
+        </div>
+      </div>
+
+      <div id="create-status"></div>
+    </div>
+
+    <!-- Jobs Tab -->
+    <div id="tab-jobs" class="tab-content">
+      <div class="card">
+        <h2>📋 All jobs</h2>
+        <div id="job-list"><div class="empty">Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- Insights Tab -->
+    <div id="tab-settings" class="tab-content">
+      <div class="card">
+        <h2>📊 Production</h2>
+        <div id="analytics-view"><div class="empty">Loading...</div></div>
+        <div style="margin-top:12px"><button class="btn btn-secondary btn-small" onclick="exportCSV()">📥 Export CSV</button></div>
+      </div>
+      <div class="card">
+        <h2>💲 Estimated model cost</h2>
+        <p class="hint">Token counts reported by the provider multiplied by the rate table in <code>src/skills/costTracker.mjs</code>. These are <b>estimates</b> — your provider's billing page is the truth.</p>
+        <div id="costs-view"><div class="empty">Loading...</div></div>
+      </div>
+      <div class="card">
+        <h2>🧠 Recurring review issues</h2>
+        <p class="hint">Kinds of problem the reviewer found in at least 3 of the last 50 review rounds — a hint about what to tighten in your rules.</p>
+        <div id="skills-view"><div class="empty">Loading...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
