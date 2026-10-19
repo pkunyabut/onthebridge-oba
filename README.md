@@ -57,6 +57,16 @@ flowchart LR
 
 Then the **Human Gate**: read the file, then **approve**, **send back with an instruction**, or **cancel**.
 
+## What it looks like
+
+![The Human Gate: internal-check results, evidence base, fact-check tools and the Approve / Send back / Cancel buttons](docs/images/human-gate.png)
+
+*The Human Gate. The checks report exactly what they found — here a fact that failed its quote check was kept out, and the evidence base is flagged "thin" — and then the decision is yours.*
+
+![Starting an article: topic, audience, article language, template and AI provider](docs/images/create-article.png)
+
+> These screenshots come from a **demo run with the AI and the web replaced by a stub** (a fictional "Riverside City" story, so no API key or cost was involved). That is why the article is short and the checks complain: it is the system working, not a real article. Real runs depend on your model and sources — see [Honest limits](#honest-limits).
+
 ## Features
 
 - **Evidence you can audit**: per-claim source, quote and rationale; four evidence types (primary text, study, corroborated, attributed testimony); an *evidence base* summary that warns when an article rests on one agency.
