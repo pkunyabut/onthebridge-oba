@@ -88,7 +88,7 @@ Open **http://127.0.0.1:8080**, type a topic, press **Start the article**. On Wi
 A web-search key (Tavily, Serper or Brave) is **effectively required** — without one the system falls back to free Wikipedia
 and DuckDuckGo lookups, and DuckDuckGo returns nothing to programs, so you get Wikipedia pages only.
 
-➡️ **Full walkthrough: [docs/GUIDE.md](docs/GUIDE.md)** (install, your first article, reading the results, the Human Gate,
+➡️ **Full walkthrough: [docs/GUIDE.md](docs/GUIDE.md)** (Thai edition: [docs/GUIDE.th.md](docs/GUIDE.th.md)) (install, your first article, reading the results, the Human Gate,
 posting, editing the rules, MCP, troubleshooting).
 
 ## Channels
