@@ -23,7 +23,7 @@
                      "deepseek"
                  ],
     "dependencies":  {
-                         "@modelcontextprotocol/sdk":  "^1.32.1",
+                         "@modelcontextprotocol/sdk":  "^1.32.2",
                          "exceljs":  "^4.4.0",
                          "mammoth":  "^1.12.3",
                          "pdfjs-dist":  "^6.3.289",
